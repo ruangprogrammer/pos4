@@ -180,7 +180,7 @@ function terbilang($x, $style=4) {
                             </tr>
 
                             <tr>
-                                <td colspan="4" class="text-right" style="text-align: right;"><strong>Diskon</strong></td>
+                                <td colspan="4" class="text-right" style="text-align: right;"><strong>DISKON</strong></td>
                                 <td  style="text-align:  center;"><strong>Rp. <?php echo number_format($_POST['diskon_price'], 0, ',', '.'); ?></strong></td>
                             </tr>
                             <tr>
@@ -233,7 +233,7 @@ function terbilang($x, $style=4) {
 <!--common scripts for all pages-->
 <script src="assets/js/scripts.js"></script>
 <script type="text/javascript">
- // window.print();
+  window.print();
 </script>
 
 </body>
