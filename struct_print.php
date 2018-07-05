@@ -134,8 +134,8 @@ function terbilang($x, $style=4) {
                     <tbody>
                         <?php
                         $CetakNota = mysqli_query($mysqli, "SELECT * FROM orders_detail,product 
-                           WHERE orders_detail.product_id=product.product_id 
-                           AND id_orders='$_POST[id_orders]'");
+                         WHERE orders_detail.product_id=product.product_id 
+                         AND id_orders='$_POST[id_orders]'");
                         $totalcetak = 0;
                         $itemcetak = 0;
                         $no = 1;
@@ -160,21 +160,9 @@ function terbilang($x, $style=4) {
                             <?php } ?>
 
                             <tr>
-                                <td colspan="4"><strong>Diskon</strong></td>
-                                <td  style="text-align:  center;"><strong>Rp. <?php echo number_format($_POST['diskon_price'], 0, ',', '.'); ?></strong></td>
-                            </tr>
-                                <tr>
-                                <td colspan="4"><strong>CASH</strong></td>
-                                <td  style="text-align:  center;"><strong>Rp. <?php echo number_format(str_replace(".", "", $_POST['cash']), 0, ',', '.'); ?></strong></td>
-                            </tr>
-                             <tr>
-                                <td colspan="4"><strong>KEMBALI</strong></td>
-                                <td  style="text-align:  center;"><strong>Rp. <?php echo number_format($_POST['diskon_price'], 0, ',', '.'); ?></strong></td>
-                            </tr>
-                            <tr>
                                 <td colspan="4" class="text-center" style="text-align: left;">
                                     <strong>
-                                        TERBILANG : <?php echo terbilang(str_replace(".", "",$discount_price), $style=3); ?> Rupiah.
+                                       JUMLAH
                                     </strong>
                                 </td>
                                 <td class="text-center">
@@ -187,36 +175,52 @@ function terbilang($x, $style=4) {
                                         $discount_price = $list_price - $discount_total;
 
                                         echo number_format(str_replace(".", "", $discount_price), 0, ',', '.'); ?>
-                                     </strong>
-                               </td>
+                                    </strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="4"><strong>Diskon</strong></td>
+                                <td  style="text-align:  center;"><strong>Rp. <?php echo number_format($_POST['diskon_price'], 0, ',', '.'); ?></strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>CASH</strong></td>
+                                <td  style="text-align:  center;"><strong>Rp. <?php echo number_format(str_replace(".", "", $_POST['cash']), 0, ',', '.'); ?></strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>KEMBALI</strong></td>
+                                <td  style="text-align:  center;"><strong>Rp. <?php 
+                                
+                                echo number_format($_POST['kembali'], 0, ',', '.'); 
+
+                                ?></strong></td>
+                            </tr>
 
 
-                           </tr>
+                        </tbody>
+                    </div>
+                </table>
+                <br>
+                <div class="panel-body invoice">
 
-                       </tbody>
-                   </div>
-               </table>
-               <br>
-               <div class="panel-body invoice">
-
-                <div class="invoice-address">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-5">  
-                           &nbsp; &nbsp; &nbsp; Jakarta, <?php echo date('d')." ".$bulan[date('m')]." ".date('Y'); ?><br><br><br><br>
-                           &nbsp; &nbsp;
-                           <br>&nbsp; &nbsp;&nbsp; &nbsp;Authorized Signature
-                       </div>
-                       <div class="col-md-4 col-md-offset-3 col-sm-4 col-sm-offset-3 col-xs-4 col-xs-offset-3">
-                        &nbsp; &nbsp; &nbsp; Di terima Oleh,<br><br><br><br>
-                        &nbsp; &nbsp;
-                        <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Customer
+                    <div class="invoice-address">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-5">  
+                             &nbsp; &nbsp; &nbsp; Jakarta, <?php echo date('d')." ".$bulan[date('m')]." ".date('Y'); ?><br><br><br><br>
+                             &nbsp; &nbsp;
+                             <br>&nbsp; &nbsp;&nbsp; &nbsp;Authorized Signature
+                         </div>
+                         <div class="col-md-4 col-md-offset-3 col-sm-4 col-sm-offset-3 col-xs-4 col-xs-offset-3">
+                            &nbsp; &nbsp; &nbsp; Di terima Oleh,<br><br><br><br>
+                            &nbsp; &nbsp;
+                            <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Customer
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--body wrapper end -->
-</section>
+        <!--body wrapper end -->
+    </section>
 
 <!--
  Placed js at the end of the document so the pages load faster 
