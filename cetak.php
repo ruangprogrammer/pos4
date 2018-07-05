@@ -1,11 +1,4 @@
 <?php
-//
-// hjsjjs jjs jjsj jjs
-// diskon = (diskon - 100) /100 * HARGA semula ;   
-// jshdhsd hhs hhsbmmfkfiiiw jjdhfyyuwh nji
-// 
-//
-//jshdjsd jksdj jjs
 function isi_keranjang()
 {
     include('config.php');
@@ -137,11 +130,17 @@ $daftarproduk = mysqli_query($mysqli,"SELECT * FROM orders_detail,product
                                                         <!-- print new -->
                                                         <form method="post" action="struct_print.php" target="_blank">
 
-                                                            <input type="hidden" name="kembali" value="<?php echo $kembalinya; ?>">
+                                                            
+                                                            <input type="hidden" name="jumlah_price" value="<?php echo  $discount_price; ?>">
 
                                                             <input type="hidden" name="diskon_price" value="<?php echo $_POST['diskon_price']; ?>">
+
+                                                            <input type="hidden" name="kembali" value="<?php echo $kembalinya; ?>">
+
                                                             <input type="hidden" name="cash" value="<?php echo $_POST['cash']; ?>">
+
                                                             <input type="hidden" name="id_orders" value="<?php echo $id_orders; ?>">
+
                                                             <button class="btn btn-primary" type="submit">
                                                                 <i class="fa fa-print"></i> print
                                                             </button>
