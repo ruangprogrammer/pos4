@@ -2,8 +2,6 @@
 session_start();
 error_reporting(0);
 include 'config.php';
-//http://harviacode.com/2014/09/23/membuat-fungsi-terbilang-php/
-
 $bulan = array(
     '01' => 'Januari',
     '02' => 'Februari',
@@ -18,62 +16,6 @@ $bulan = array(
     '11' => 'November',
     '12' => 'Desember',
 );
-
-
-
-function kekata($x) {
-    $x = abs($x);
-    $angka = array("", "satu", "dua", "tiga", "empat", "lima",
-        "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
-    $temp = "";
-    if ($x <12) {
-        $temp = " ". $angka[$x];
-    } else if ($x <20) {
-        $temp = kekata($x - 10). " belas";
-    } else if ($x <100) {
-        $temp = kekata($x/10)." puluh". kekata($x % 10);
-    } else if ($x <200) {
-        $temp = " seratus" . kekata($x - 100);
-    } else if ($x <1000) {
-        $temp = kekata($x/100) . " ratus" . kekata($x % 100);
-    } else if ($x <2000) {
-        $temp = " seribu" . kekata($x - 1000);
-    } else if ($x <1000000) {
-        $temp = kekata($x/1000) . " ribu" . kekata($x % 1000);
-    } else if ($x <1000000000) {
-        $temp = kekata($x/1000000) . " juta" . kekata($x % 1000000);
-    } else if ($x <1000000000000) {
-        $temp = kekata($x/1000000000) . " milyar" . kekata(fmod($x,1000000000));
-    } else if ($x <1000000000000000) {
-        $temp = kekata($x/1000000000000) . " trilyun" . kekata(fmod($x,1000000000000));
-    }     
-    return $temp;
-}
-
-
-function terbilang($x, $style=4) {
-    if($x<0) {
-        $hasil = "minus ". trim(kekata($x));
-    } else {
-        $hasil = trim(kekata($x));
-    }     
-    switch ($style) {
-        case 1:
-        $hasil = strtoupper($hasil);
-        break;
-        case 2:
-        $hasil = strtolower($hasil);
-        break;
-        case 3:
-        $hasil = ucwords($hasil);
-        break;
-        default:
-        $hasil = ucfirst($hasil);
-        break;
-    }     
-    return $hasil;
-}
-
 
 ?>
 <!DOCTYPE html>
@@ -167,14 +109,8 @@ function terbilang($x, $style=4) {
                                 </td>
                                 <td class="text-center">
                                     <strong>
-                                        Rp. <?php 
-                                        $list_price = str_replace(".", "", $_POST['cash']);
-                                        $discount_total = $_POST['diskon_price'];
-                                        //$discount_amount = $list_price * $discount_percent * .01;
-
-                                        $discount_price = $list_price - $discount_total;
-
-                                        echo number_format(str_replace(".", "", $discount_price), 0, ',', '.'); ?>
+                                        Rp. <?php
+                                        echo number_format(str_replace(".", "", $_POST['jumlah_price']), 0, ',', '.'); ?>
                                     </strong>
                                 </td>
                             </tr>
@@ -195,8 +131,6 @@ function terbilang($x, $style=4) {
 
                                 ?></strong></td>
                             </tr>
-
-
                         </tbody>
                     </div>
                 </table>
