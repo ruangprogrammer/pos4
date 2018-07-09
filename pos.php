@@ -100,7 +100,8 @@ $rowGrandTotal = mysqli_fetch_array($grand_total);
                                                         </tr>
                                                     <?php } ?>
                                                     <tr>
-                                                        <td colspan="5">Diskon : <input type="number" name="diskon_price" value="0" ></td>
+                                                        <td colspan="4">Diskon : <input type="number" name="diskon_price" value="0" > </td>
+                                                        <td colspan="2">Rupiah</td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="4">
