@@ -34,13 +34,13 @@ if ($jml == 0) {
 $jam_skrg = date("H:i:s");
 // simpan data pemesanan
 mysqli_query($mysqli,"INSERT INTO 
-    orders(nama_petugas, tgl_order, jam_order) 
-    VALUES ('" . $_SESSION['username'] . "',NOW(),'$jam_skrg')");
+    orders(nama_petugas, tgl_order, jam_order, diskon) 
+    VALUES ('" . $_SESSION['username'] . "',NOW(),'$jam_skrg', ".$_POST['diskon_price'].")");
 //exit();
 // mendapatkan nomor orders
 $id_orders = mysqli_insert_id($mysqli);
 // panggil fungsi isi_keranjang dan hitung jumlah produk yang dipesan
-// simpan data detail pemesanan
+// simpan data detail pemesanan 
 for ($i = 0; $i < $jml; $i++) {
     mysqli_query($mysqli,"INSERT INTO orders_detail(id_orders, product_id, jumlah) 
      VALUES('$id_orders',{$isikeranjang[$i]['product_id']}, {$isikeranjang[$i]['jumlah']})");
