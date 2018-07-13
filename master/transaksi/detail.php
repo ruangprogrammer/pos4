@@ -15,8 +15,8 @@ $queryRowOrder = mysqli_query($mysqli,"SELECT *
             <div class="col-lg-12 text-left">
                 <section class="panel">
                     <header class="panel-heading">
-                     Detail Transaksi Order 
-                 </header>
+                        Detail Transaksi Order 
+                    </header>
 
                  <div class="panel-body">
                     <?php 
@@ -61,11 +61,27 @@ $queryRowOrder = mysqli_query($mysqli,"SELECT *
                                    </tr>
                                    <?php } ?>
                                    <tr>
+                                    <td colspan="4">Diskon</td>
+                                    <td>Rp. 
+                                        <?php 
+                                        if($dataOrder['diskon'] == 0){
+                                            echo "0";
+                                        }else{
+                                            echo  number_format($dataOrder['diskon'],0,',','.');
+                                        }
+                                        ?>    
+                                        </td>
+                                   </tr
+                                   >
+                                   <tr>
                                     <td colspan="4">
                                         Total
                                     </td>
                                     <td>Rp. 
-                                        <?php echo number_format($total,0,',','.'); ?>
+                                        <?php 
+                                        $jumlah_total = $total - $dataOrder['diskon'];
+                                        echo number_format($jumlah_total,0,',','.'); 
+                                        ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -73,8 +89,6 @@ $queryRowOrder = mysqli_query($mysqli,"SELECT *
                             </tbody>
                         </table>
                     </div>  
-
-
                 </section>
             </div>
         </div>
